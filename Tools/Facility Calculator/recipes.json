@@ -1,0 +1,91 @@
+{
+    "coke": 
+    [{
+        "standard":
+        [{
+            "input":
+            [{
+                "coal": 200
+            }]
+        },
+
+        {
+            "output":
+            [{
+                "coke": 180
+            }]
+        },
+
+        {
+            "time": 120
+        }]
+    },
+
+    {
+        "furnace":
+        [{
+            "input":
+            [{
+                "coal": 200
+            }]
+        },
+
+        {
+            "output":
+            [{
+                "coke": 165,
+                "sulfur": 15
+            }]
+        },
+
+        {
+            "time": 120
+        }]
+    },
+
+    {
+        "liquifier":
+        [{
+            "input":
+            [{
+                "coal": 300,
+                "water": 50
+            }]
+        },
+
+        {
+            "output":
+            [{
+                "concrete": 1,
+                "oil": 50
+            }]
+        },
+
+        {
+            "time": 270
+        }]
+    },
+
+    {
+        "advanced":
+        [{
+            "input":
+            [{
+                "coal": 300,
+                "water": 100
+            }]
+        },
+
+        {
+            "output":
+            [{
+                "coke": 260,
+                "hoil": 60
+            }]
+        },
+
+        {
+            "time": 405
+        }]
+    }]
+}
