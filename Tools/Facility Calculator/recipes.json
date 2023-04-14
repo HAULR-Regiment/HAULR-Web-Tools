@@ -1,7 +1,29 @@
-{
+{   
+    "components":
+    [{
+        "recycler":
+        [{
+            "input":
+            [{
+                "broken components": 30
+            }]
+        }, 
+
+        {
+            "output":
+            [{
+                "components": 20
+            }]
+        },
+
+        {
+            "time": 90
+        }]
+    }],
+
     "coke": 
     [{
-        "standard":
+        "coal refinery":
         [{
             "input":
             [{
@@ -22,7 +44,7 @@
     },
 
     {
-        "furnace":
+        "coke furnace":
         [{
             "input":
             [{
@@ -44,7 +66,7 @@
     },
 
     {
-        "liquifier":
+        "coal liquifier":
         [{
             "input":
             [{
@@ -67,7 +89,7 @@
     },
 
     {
-        "advanced":
+        "advanced coal liquifier":
         [{
             "input":
             [{
@@ -80,12 +102,267 @@
             "output":
             [{
                 "coke": 260,
-                "hoil": 60
+                "heavy oil": 60
             }]
         },
 
         {
             "time": 405
+        }]
+    }],
+
+    "petrol":
+    [{
+        "oil refinery":
+        [{
+            "input":
+            [{
+                "oil": 150
+            }]
+        },
+
+        {
+            "output":
+            [{
+                "petrol": 150
+            }]
+        },
+
+        {
+            "time": 150
+        }],
+
+        "reformer":
+        [{
+            "input":
+            [{
+                "oil": 120,
+                "water": 30
+            }]
+        },
+
+        {
+            "output":
+            [{
+                "petrol": 150
+            }]
+        },
+
+        {
+            "time": 150
+        }]
+    }],
+
+    "heavy oil":
+    [{
+        "cracking unit":
+        [{
+            "input":
+            [{
+                "oil": 150
+            }]
+        },
+
+        {
+            "output":
+            [{
+                "heavy oil": 90
+            }]
+        },
+
+        {
+            "time": 160
+        }],
+
+        "advance coal liquifier":
+        [{
+            "input":
+            [{
+                "coal": 300,
+                "water": 100
+            }]
+        },
+
+        {
+            "output":
+            [{
+                "heavy oil": 60,
+                "coke": 260
+            }]
+        },
+
+        {
+            "time": 405
+        }]
+    }],
+
+    "enriched oil":
+    [{
+        "petrochemical plant":
+        [{
+            "input":
+            [{
+                "heavy oil": 30,
+                "sulfur": 60
+            }]
+        },
+
+        {
+            "output":
+            [{
+                "enriched oil": 30
+            }]
+        },
+
+        {
+            "time": 200
+        }]
+    }],
+
+    "construction material":
+    [{
+        "materials factory":
+        [{
+            "input":
+            [{
+                "salvage": 10
+            }]
+        },
+
+        {
+            "output":
+            [{
+                "construction material": 1
+            }]
+        },
+
+        {
+            "time": 25
+        }],
+
+        "smelter":
+        [{
+            "input":
+            [{
+                "salvage": 15,
+                "coke": 25
+            }]
+        },
+
+        {
+            "output":
+            [{
+                "construction material": 3
+            }]
+        },
+
+        {
+            "time": 25
+        }],
+
+        "metal press":
+        [{
+            "input":
+            [{
+                "salvage": 15,
+                "petrol": 25
+            }]
+        },
+
+        {
+            "output":
+            [{
+                "construction material": 3
+            }]
+        },
+
+        {
+            "time": 25
+        }],
+
+        "assembly bay":
+        [{
+            "input":
+            [{
+                "salvage": 25
+            }]
+        },
+
+        {
+            "output":
+            [{
+                "construction material": 1,
+                "snadbag/barbed wire": 5
+            }]
+        },
+
+        {
+            "time": 25
+        }]
+    }],
+
+    "processed construction material":
+    [{
+        "metalworks":
+        [{
+            "input":
+            [{
+                "components": 20,
+                "construction material": 3
+            }]
+        },
+
+        {
+            "output":
+            [{
+                "processed construction material": 1
+            }]
+        },
+
+        {
+            "time": 60
+        }],
+
+        "blast furnace":
+        [{
+            "input":
+            [{
+                "components": 55,
+                "construction material": 3,
+                "heavy oil": 6
+            }]
+        },
+
+        {
+            "output":
+            [{
+                "processed construction material": 3
+            }]
+        },
+
+        {
+            "time": 60
+        }],
+
+        "recycler":
+        [{
+            "input":
+            [{
+                "components": 20,
+                "construction material": 3
+            }]
+        },
+
+        {
+            "output":
+            [{
+                "processed construction material": 1,
+                "metal beam": 1
+            }]
+        },
+
+        {
+            "time": 60
         }]
     }]
 }
