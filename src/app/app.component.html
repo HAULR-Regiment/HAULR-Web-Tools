@@ -1,0 +1,48 @@
+<div class="container pt-4">
+	<div class="row justify-content-center">
+		<div class="col-md-6">
+			<form (ngSubmit)="onSubmit()">
+				<div class="form-group">
+					<label for="item">Select an item:</label>
+					<div class="input-group">
+						<select class="form-control" id="item" name="item" [(ngModel)]="selectedItem" #itemSelect
+							(ngModelChange)="onItemSelect()">
+							<option *ngFor="let item of items" [value]="item">{{ item }}</option>
+						</select>X
+						<div class="input-group-append">
+							<select class="form-control" id="quantity" name="quantity" [(ngModel)]="selectedQuantity">
+								<option *ngFor="let quantity of quantities" [value]="quantity">{{ quantity }}</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="processing">Select a processing method:</label>
+					<select class="form-control" id="processing" name="processing" [(ngModel)]="selectedProcess"
+						[disabled]="!selectedItem">
+						<option *ngFor="let processing of processings" [value]="processing">{{ processing }}
+						</option>
+					</select>
+				</div>
+				<button type="submit" class="btn btn-primary mt-3">Add Item</button>
+			</form>
+		</div>
+	</div>
+	<div class="row justify-content-center">
+		<div class="col-md-6">
+			<h2>Selected Items</h2>
+			<ul class="list-group">
+				<li *ngFor="let item of selectedItems; let i = index" class="list-group-item">
+					<h5>{{ item.item }} - {{ item.processing }}</h5>
+					<br> Time to complete: {{ item.time }} seconds
+					<br> Resources required: {{ item.resources }}
+					<br> Expected output: {{ item.output }}
+					<br>
+					<button type="button" class="btn btn-danger btn-sm float-right" (click)="removeItem(i)">
+						Remove
+					</button>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
