@@ -1,3 +1,23 @@
+<!-- <nav class="navbar navbar-expand-lg">
+	<div class="container-fluid">
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01"
+			aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+			<ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+			<form class="d-flex">
+				<div class="form-check form-switch">
+					<input class="form-check-input" type="checkbox" id="" (click)="toggleDarkMode()">
+					<label class="form-check-label toggle" for="darkSwitch">
+						<i class=""></i>
+						<i class=""></i>
+					</label>
+				</div>
+			</form>
+		</div>
+	</div>
+</nav> -->
 <div class="container pt-4">
 	<div class="row justify-content-center">
 		<div class="col-md-6">
@@ -8,12 +28,14 @@
 						<select class="form-control" id="item" name="item" [(ngModel)]="selectedItem" #itemSelect
 							(ngModelChange)="onItemSelect()">
 							<option *ngFor="let item of items" [value]="item">{{ item }}</option>
-						</select>X
-						<div class="input-group-append">
-							<select class="form-control" id="quantity" name="quantity" [(ngModel)]="selectedQuantity">
-								<option *ngFor="let quantity of quantities" [value]="quantity">{{ quantity }}</option>
-							</select>
-						</div>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="processing">Quantity:</label>
+						<input type="number" pattern="[0-9]*" class="form-control" id="quantity" name="quantity"
+							[(ngModel)]="selectedQuantity" min="1" step="1" (input)="onlyNumber()">
+						<!-- <div *ngIf="isNaN(selectedQuantity)" class="alert alert-danger mt-2">Quantity must be a number
+						</div> -->
 					</div>
 				</div>
 				<div class="form-group">
@@ -28,12 +50,55 @@
 			</form>
 		</div>
 	</div>
-	<div class="row justify-content-center">
+	<ng-container *ngIf="formSubmitted">
+		<div class="row justify-content-center">
+			<div class="col-md-8">
+				<h2>Selected Items</h2>
+				<div class="table-responsive">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>Total Runs</th>
+								<th>Item</th>
+								<th>Processing Method</th>
+								<th>Time to Complete</th>
+								<th>Resources Required</th>
+								<th>Expected Output</th>
+								<th>Actions</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr *ngFor="let item of selectedItems; let i = index">
+								<td>{{ item.totalRuns }}</td>
+								<td>{{ item.item }}</td>
+								<td>{{ item.processing }}</td>
+								<td>{{ item.time }}</td>
+								<td>
+									<div [innerHtml]='item.resources'></div>
+								</td>
+								<td>
+									<div [innerHtml]='item.output'></div>
+								</td>
+								<td>
+									<button type="button" class="btn btn-danger btn-sm"
+										(click)="removeItem(i)">Remove</button>
+								</td>
+							</tr>
+							<tr *ngIf="selectedItems.length === 0">
+								<td colspan="7" class="text-center">No items selected</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</ng-container>
+	<!-- <div class="row justify-content-center">
 		<div class="col-md-6">
 			<h2>Selected Items</h2>
 			<ul class="list-group">
 				<li *ngFor="let item of selectedItems; let i = index" class="list-group-item">
-					<h5>{{ item.item }} - {{ item.processing }}</h5>
+					<h5>{{ item.totalRuns }} x {{ item.item }} - {{ item.processing }}</h5>
 					<br> Time to complete: {{ item.time }} seconds
 					<br> Resources required: {{ item.resources }}
 					<br> Expected output: {{ item.output }}
@@ -44,5 +109,5 @@
 				</li>
 			</ul>
 		</div>
-	</div>
+	</div> -->
 </div>

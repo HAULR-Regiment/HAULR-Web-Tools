@@ -1,14 +1,15 @@
-import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { Component, Renderer2 } from '@angular/core';
 import { UtilServiceService } from './util-service.service';
-import recipes from 'src/assets/test_recipes.json';
+import recipes from 'src/assets/recipes.json';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  constructor(private http: HttpClient) { }
+  constructor(private renderer: Renderer2) { }
+
+  darkMode = true;
 
   title = 'logi.tools';
 
@@ -17,34 +18,45 @@ export class AppComponent {
   items: any[] = [];
   quantities: any[] = [];
   processings: any[] = [];
+
+  formSubmitted = false;
+  selectedItem!: string;
+  selectedProcess!: string;
+  selectedQuantity!: number;
+  outputNumber: number = 1;
+
+  //TODO: Add error checking on quaity. Add cookie for night mode. 
   ngOnInit() {
-    recipes["items"].forEach(item => {
-      this.items.push(this.util.capitalizeFirstLetter(item["name"]))
+    this.selectedQuantity = 1;
+    recipes['items'].forEach(item => {
+      this.items.push(this.util.capitalizeFirstLetter(item['name'].toLowerCase()));
     });
     this.items.sort();
   }
 
-
-  selectedItem!: string;
-  selectedProcess!: string;
-  selectedQuantity!: string;
   possibleProcesses: any = {};
   timeToMake!: string;
   resourcesPerItem: string = '';
   outputPerItem: string = '';
-  selectedItems: { item: string, processing: string, time: string, resources: string, output: string }[] = [];
+  quantity: number = 1;
+  selectedItems: { totalRuns: string, item: string, processing: string, time: string, resources: string, output: string }[] = [];
+
   onItemSelect() {
     if (this.selectedItem) {
       this.selectedProcess = '';
+
+      // Reassign to empty array. Otherwise data is saved across selections.
       this.processings = []
-      recipes["items"].forEach(item => {
+
+      recipes['items'].forEach(item => {
         if (item['name'] === this.selectedItem.toLowerCase()) {
           this.possibleProcesses = item['processes'];
           item['processes'].forEach(e => {
-            this.processings.push(this.util.capitalizeFirstLetter(e['name'].toLowerCase()))
+            this.processings.push(this.util.capitalizeFirstLetter(e['name'].toLowerCase()));
           });
         }
       });
+
       this.processings.sort();
     }
     else {
@@ -52,35 +64,43 @@ export class AppComponent {
     }
 
   }
-  onSubmit() {
-    this.possibleProcesses.forEach((element: any) => {
-      if (this.selectedProcess.toLowerCase() === element['name']) {
-        this.timeToMake = element['time'];
-        console.log(element['input'])
-        for (let mat in element['input']) {
-          this.resourcesPerItem += this.util.capitalizeFirstLetter(mat) + ':\t ' + element['input'][mat] + '\t\n'
-          // console.log(mat);
-          // console.log(element['input'][mat])
-        }
-        for (let mat in element['output']) {
-          this.outputPerItem += this.util.capitalizeFirstLetter(mat) + ':\t ' + element['output'][mat] + '\t\n'
-        }
-        // element['input'].forEach((inputs: any) => {
-        //   console.log(inputs)
-        // });
-      }
-    });
 
-    const newItem = {
-      item: this.selectedItem, processing: this.selectedProcess,
-      time: this.timeToMake, resources: this.resourcesPerItem, output: this.outputPerItem
-    };
-    this.selectedItems.push(newItem);
-    this.selectedItem = '';
-    this.selectedProcess = '';
-  }
-  calculateTotal() {
-    console.log()
+  onSubmit() {
+    if (this.selectedQuantity === null || this.selectedQuantity <= 0) {
+      this.selectedQuantity = 1;
+    }
+    if (this.selectedItem != '' && this.selectedProcess != '') {
+      this.formSubmitted = true;
+      let totalTimes: number = 1;
+      this.possibleProcesses.forEach((element: any) => {
+        if (this.selectedProcess.toLowerCase() === element['name']) {
+          this.timeToMake = element['time'];
+          for (let mat in element['output']) {
+            if (this.selectedItem.toLowerCase() === mat) {
+              this.outputNumber = parseInt(element['output'][mat]);
+              totalTimes = this.util.getOutputTotal(this.outputNumber, this.selectedQuantity);
+            }
+            this.outputPerItem += this.util.capitalizeFirstLetter(mat) + ':\t ' + Number(element['output'][mat] * totalTimes).toLocaleString() + '<br>';
+          }
+          for (let mat in element['input']) {
+            this.resourcesPerItem += this.util.capitalizeFirstLetter(mat) + ':\t ' + Number(element['input'][mat] * totalTimes).toLocaleString() + '<br>';
+          }
+        }
+      });
+
+      const newItem = {
+        totalRuns: totalTimes.toLocaleString(), item: this.selectedItem, processing: this.selectedProcess,
+        time: this.util.convertTime(this.timeToMake as any * totalTimes), resources: this.resourcesPerItem, output: this.outputPerItem
+      };
+
+      this.selectedItems.push(newItem);
+      this.selectedItem = '';
+      this.selectedProcess = '';
+      this.timeToMake = '';
+      this.resourcesPerItem = '';
+      this.outputPerItem = '';
+      this.selectedQuantity = 1;
+    }
   }
 
   removeItem(index: number) {
@@ -88,10 +108,24 @@ export class AppComponent {
   }
 
   onlyNumber() {
+    console.log(this.selectedQuantity)
+    if (this.selectedQuantity === null) {
+      console.log("nulled out")
 
-  }
-  increment() {
+    }
+    else {
 
+    }
   }
+
+  toggleDarkMode() {
+    this.darkMode = !this.darkMode;
+    if (this.darkMode) {
+      this.renderer.addClass(document.body, 'dark-mode');
+    } else {
+      this.renderer.removeClass(document.body, 'dark-mode');
+    }
+  }
+
 
 }
