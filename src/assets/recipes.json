@@ -1,226 +1,399 @@
 {
-    "items": [
-        {
-            "name": "coke",
-            "processes": [
+    "items": 
+    [{
+        "name": "coke",
+        "processes": 
+        [
+            {
+                "name": "coal refinery",
+                "input": 
                 {
-                    "name": "coal refinery",
-                    "input": {
-                        "coal": 200
-                    },
-                    "output": {
-                        "coke": 180
-                    },
-                    "time": 120
+                    "coal": 200
                 },
+                "output": 
                 {
-                    "name": "coke furnace",
-                    "input": {
-                        "coal": 200
-                    },
-                    "output": {
-                        "coke": 165,
-                        "sulfur": 15
-                    },
-                    "time": 120
+                    "coke": 180
                 },
+                "time": 120
+            },
+            {
+                "name": "coke furnace",
+                "input": 
                 {
-                    "name": "coal liquifier",
-                    "input": {
-                        "coal": 300,
-                        "water": 50
-                    },
-                    "output": {
-                        "concrete": 1,
-                        "oil": 50
-                    },
-                    "time": 270
+                    "coal": 200
                 },
+                "output": 
                 {
-                    "name": "advanced coal liquifier",
-                    "input": {
-                        "coal": 300,
-                        "water": 100
-                    },
-                    "output": {
-                        "coke": 260,
-                        "heavy oil": 60
-                    },
-                    "time": 405
-                }
-            ]
-        },
-        {
-            "name": "components",
-            "processes": [
-                {
-                    "name": "recycler",
-                    "input": {
-                        "broken components": 30
-                    },
-                    "output": {
-                        "components": 20
-                    },
-                    "time": 90
-                }
-            ]
-        },
-        {
-            "name": "petrol",
-            "processes": [
-                {
-                    "name": "oil refinery",
-                    "input": {
-                        "oil": 150
-                    },
-                    "output": {
-                        "petrol": 150
-                    },
-                    "time": 150
+                    "coke": 165,
+                    "sulfur": 15
                 },
+                "time": 120
+            },
+            {
+                "name": "coal liquifier",
+                "input": 
                 {
-                    "name": "reformer",
-                    "input": {
-                        "oil": 120,
-                        "water": 30
-                    },
-                    "output": {
-                        "petrol": 150
-                    },
-                    "time": 150
-                }
-            ]
-        },
-        {
-            "name": "heavy oil",
-            "processes": [
-                {
-                    "name": "cracking unit",
-                    "input": {
-                        "oil": 150
-                    },
-                    "output": {
-                        "heavy oil": 90
-                    },
-                    "time": 160
+                    "coal": 300,
+                    "water": 50
                 },
+                "output": 
                 {
-                    "name": "advance coal liquifier",
-                    "input": {
-                        "coal": 300,
-                        "water": 100
-                    },
-                    "output": {
-                        "heavy oil": 60,
-                        "coke": 260
-                    },
-                    "time": 405
-                }
-            ]
-        },
-        {
-            "name": "enriched oil",
-            "processes": [
-                {
-                    "name": "petrochemical plant",
-                    "input": {
-                        "heavy oil": 30,
-                        "sulfur": 60
-                    },
-                    "output": {
-                        "enriched oil": 30
-                    },
-                    "time": 200
-                }
-            ]
-        },
-        {
-            "name": "construction material",
-            "processes": [
-                {
-                    "name": "materials factory",
-                    "input": {
-                        "salvage": 10
-                    },
-                    "output": {
-                        "construction material": 1
-                    },
-                    "time": 25
+                    "concrete": 1,
+                    "oil": 50
                 },
+                "time": 270
+            },
+            {
+                "name": "advanced coal liquifier",
+                "input": 
                 {
-                    "name": "smelter",
-                    "input": {
-                        "salvage": 15,
-                        "coke": 25
-                    },
-                    "output": {
-                        "construction material": 3
-                    },
-                    "time": 25
+                    "coal": 300,
+                    "water": 100
                 },
+                "output": 
                 {
-                    "name": "metal press",
-                    "input": {
-                        "salvage": 15,
-                        "petrol": 25
-                    },
-                    "output": {
-                        "construction material": 3
-                    },
-                    "time": 25
+                    "coke": 260,
+                    "heavy oil": 60
                 },
+                "time": 405
+            }
+        ]
+    },
+    {
+        "name": "components",
+        "processes": 
+        [
+            {
+                "name": "recycler",
+                "input": 
                 {
-                    "name": "assembly bay",
-                    "input": {
-                        "salvage": 25
-                    },
-                    "output": {
-                        "construction material": 1,
-                        "snadbag/barbed wire": 5
-                    },
-                    "time": 25
-                }
-            ]
-        },
-        {
-            "name": "processed construction material",
-            "processes": [
-                {
-                    "name": "metalworks",
-                    "input": {
-                        "components": 20,
-                        "construction material": 3
-                    },
-                    "output": {
-                        "processed construction material": 1
-                    },
-                    "time": 60
+                    "broken components": 30
                 },
+                "output": 
                 {
-                    "name": "blast furnace",
-                    "input": {
-                        "components": 55,
-                        "construction material": 3,
-                        "heavy oil": 6
-                    },
-                    "output": {
-                        "processed construction material": 3
-                    },
-                    "time": 60
+                    "components": 20
                 },
+                "time": 90
+            }
+        ]
+    },
+    {
+        "name": "petrol",
+        "processes": 
+        [
+            {
+                "name": "oil refinery",
+                "input": 
                 {
-                    "name": "recycler",
-                    "input": {
-                        "components": 20,
-                        "construction material": 3
-                    },
-                    "output": {
-                        "processed construction material": 1,
-                        "metal beam": 1
-                    },
-                    "time": 60
-                }
-            ]
-        }
-    ]
+                    "oil": 150
+                },
+                "output": 
+                {
+                    "petrol": 150
+                },
+                "time": 150
+            },
+            {
+                "name": "reformer",
+                "input": 
+                {
+                    "oil": 120,
+                    "water": 30
+                },
+                "output": 
+                {
+                    "petrol": 150
+                },
+                "time": 150
+            }
+        ]
+    },
+    {
+        "name": "heavy oil",
+        "processes": 
+        [
+            {
+                "name": "cracking unit",
+                "input": 
+                {
+                    "oil": 150
+                },
+                "output": 
+                {
+                    "heavy oil": 90
+                },
+                "time": 160
+            },
+            {
+                "name": "advance coal liquifier",
+                "input": 
+                {
+                    "coal": 300,
+                    "water": 100
+                },
+                "output": 
+                {
+                    "heavy oil": 60,
+                    "coke": 260
+                },
+                "time": 405
+            }
+        ]
+    },
+    {
+        "name": "enriched oil",
+        "processes": 
+        [
+            {
+                "name": "petrochemical plant",
+                "input": 
+                {
+                    "heavy oil": 30,
+                    "sulfur": 60
+                },
+                "output": 
+                {
+                    "enriched oil": 30
+                },
+                "time": 200
+            }
+        ]
+    },
+    {
+        "name": "construction material",
+        "processes": 
+        [
+            {
+                "name": "materials factory",
+                "input": 
+                {
+                    "salvage": 10
+                },
+                "output": 
+                {
+                    "construction material": 1
+                },
+                "time": 25
+            },
+            {
+                "name": "smelter",
+                "input": 
+                {
+                    "salvage": 15,
+                    "coke": 25
+                },
+                "output": 
+                {
+                    "construction material": 3
+                },
+                "time": 25
+            },
+            {
+                "name": "metal press",
+                "input": 
+                {
+                    "salvage": 15,
+                    "petrol": 25
+                },
+                "output": 
+                {
+                    "construction material": 3
+                },
+                "time": 25
+            },
+            {
+                "name": "assembly bay",
+                "input": 
+                {
+                    "salvage": 25
+                },
+                "output": 
+                {
+                    "construction material": 1,
+                    "sandbag/barbed wire": 5
+                },
+                "time": 25
+            }
+        ]
+    },
+    {
+        "name": "processed construction material",
+        "processes": 
+        [
+            {
+                "name": "metalworks",
+                "input": 
+                {
+                    "components": 20,
+                    "construction material": 3
+                },
+                "output": 
+                {
+                    "processed construction material": 1
+                },
+                "time": 60
+            },
+            {
+                "name": "blast furnace",
+                "input": 
+                {
+                    "components": 55,
+                    "construction material": 3,
+                    "heavy oil": 6
+                },
+                "output": 
+                {
+                    "processed construction material": 3
+                },
+                "time": 60
+            },
+            {
+                "name": "recycler",
+                "input": 
+                {
+                    "components": 20,
+                    "construction material": 3
+                },
+                "output": 
+                {
+                    "processed construction material": 1,
+                    "metal beam": 1
+                },
+                "time": 60
+            }
+        ]
+    },
+    {
+        "name": "steel construction material",
+        "processes": 
+        [
+            {
+                "name": "engineering station - heavy oil",
+                "input": 
+                {
+                    "processed construction material": 3,
+                    "coke": 200,
+                    "sulfur": 65,
+                    "heavy oil": 35
+                },
+                "output": 
+                {
+                    "steel construction material": 1
+                },
+                "time": 90
+            },
+            {
+                "name": "engineering station - enriched oil",
+                "input": 
+                {
+                    "processed construction material": 9,
+                    "coke": 375,
+                    "enriched oil": 90,
+                    "water": 100
+                },
+                "output": 
+                {
+                    "steel construction material": 3
+                },
+                "time": 90
+            }
+        ]
+    },
+    {
+        "name": "assembly material 1",
+        "processes":
+        [
+            {
+                "name": "material factory",
+                "input":
+                {
+                    "salvage": 15,
+                    "coke": 75
+                },
+                "output":
+                {
+                    "assembly material 1": 1
+                },
+                "time": 60
+            }
+        ]
+    },
+    {
+        "name": "assembly material 2",
+        "processes":
+        [
+            {
+                "name": "material factory",
+                "input":
+                {
+                    "salvage": 15,
+                    "petrol": 50
+                },
+                "output":
+                {
+                    "assembly material 2": 1
+                },
+                "time": 60
+            }
+        ]
+    },
+    {
+        "name": "assembly material 3",
+        "processes":
+        [
+            {
+                "name": "blast furnace",
+                "input":
+                {
+                    "construction material": 3,
+                    "sulfur": 20
+                },
+                "output":
+                {
+                    "assembly material 3": 1
+                },
+                "time": 120
+            }
+        ]
+    },
+    {
+        "name": "assembly material 4",
+        "processes":
+        [
+            {
+                "name": "blast furnace",
+                "input":
+                {
+                    "processed construction material": 1,
+                    "heavy oil": 66
+                },
+                "output":
+                {
+                    "assembly material 4": 1
+                },
+                "time": 120
+            }
+        ]
+    },
+    {
+        "name": "assembly material 5",
+        "processes":
+        [
+            {
+                "name": "engineering station",
+                "input":
+                {
+                    "coke": 245,
+                    "steel construction material": 3,
+                    "assembly material 1": 10,
+                    "assembly material 2": 10
+                },
+                "output":
+                {
+                    "assembly material 5": 1
+                },
+                "time": 120
+            }
+        ]
+    }]
 }
