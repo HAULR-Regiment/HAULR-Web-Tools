@@ -4,15 +4,113 @@
         "name": "odyssey",
         "tier 1": 
         {
-
+            "construction material": 3
         },
         "tier 2":
         {
-
+            "construction material": 9,
+            "processed construction material": 30
         },
         "tier 3":
         {
-            
+            "construction material": 27,
+            "processed construction material": 90
+        }
+    },
+    {
+        "name": "icarus",
+        "tier 1": 
+        {
+            "construction material": 3,
+            "assembly material 2": 10
+        },
+        "tier 2":
+        {
+            "construction material": 9,
+            "processed construction material": 30,
+            "assembly material 2": 30
+        },
+        "tier 3":
+        {
+            "construction material": 27,
+            "processed construction material": 90,
+            "assembly material 2": 90
+        }
+    },
+    {
+        "name": "ixion",
+        "tier 1": 
+        {
+            "construction material": 10,
+            "assembly material 1": 15
+        },
+        "tier 2":
+        {
+            "construction material": 30,
+            "processed construction material": 30,
+            "assembly material 1": 45
+        },
+        "tier 3":
+        {
+            "construction material": 90,
+            "processed construction material": 90,
+            "assembly material 1": 135
+        }
+    },
+    {
+        "name": "vesta",
+        "tier 1": 
+        {
+            "processed construction material": 10,
+            "assembly material 1": 15
+        },
+        "tier 2":
+        {
+            "processed construction material": 30,
+            "assembly material 1": 45
+        },
+        "tier 3":
+        {
+            "processed construction material": 90,
+            "assembly material 1": 135
+        }
+    },
+    {
+        "name": "percutio",
+        "tier 1": 
+        {
+            "processed construction material": 5,
+            "assembly material 1": 10
+        },
+        "tier 2":
+        {
+            "processed construction material": 90,
+            "assembly material 1": 30
+        },
+        "tier 3":
+        {
+            "processed construction material": 270,
+            "assembly material 1": 90
+        }
+    },
+    {
+        "name": "gemini",
+        "tier 1": 
+        {
+            "construction material": 10,
+            "assembly material 1": 10
+        },
+        "tier 2":
+        {
+            "construction material": 30,
+            "processed construction material": 75,
+            "assembly material 1": 30
+        },
+        "tier 3":
+        {
+            "construction material": 90,
+            "processed construction material": 225,
+            "assembly material 1": 90
         }
     }]
 }
